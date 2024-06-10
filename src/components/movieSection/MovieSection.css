@@ -1,0 +1,9 @@
+#movieSection{
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    gap: 20px;
+}

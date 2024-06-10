@@ -1,0 +1,7 @@
+#searchSort{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}

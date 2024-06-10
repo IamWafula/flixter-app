@@ -1,0 +1,50 @@
+.movieCard {
+    width: 250px;
+    height: 350px;
+    /* remember this incase flex complains */
+    margin: 20px;
+    background-color: rgb(32, 32, 32);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.movieCard:hover {
+    background-color: rgb(47, 46, 46);
+    scale: 1.1;
+
+}
+
+
+.movieCard > img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    padding: 0 20px 0 20px;
+}
+
+.movieCard > .title {
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+.movieCard > .heart {
+    float: right;
+    padding: 10px;
+}
+
+
+.movieCard > .ratingSection {
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+}
+
+.movieCard > .ratingSection > .watched {
+    margin-left: auto;
+    padding-right: 20px;
+    align-self: center;
+}
