@@ -6,6 +6,7 @@
     background-color: rgb(32, 32, 32);
     border-radius: 20px;
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .movieCard:hover {
@@ -13,7 +14,6 @@
     scale: 1.1;
 
 }
-
 
 .movieCard > img {
     height: 200px;
@@ -34,6 +34,10 @@
 .movieCard > .heart {
     float: right;
     padding: 10px;
+}
+
+.movieCard > p {
+    overflow: hidden;
 }
 
 

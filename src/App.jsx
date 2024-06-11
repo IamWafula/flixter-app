@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div id="App">
-      <h1>Flixter App</h1>
+      <h1>Who-lu</h1>
       <SearchSort setSearch={setSearchTerm} />
       <MovieSection searchTerm={searchBy}  />
 

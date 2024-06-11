@@ -13,14 +13,23 @@ function MovieCard(props) {
     let movie_id = movie.id;
     let movie_title = movie.original_title;
     let movie_poster = movie.backdrop_path;
+    let setCurrentMovie = props.setCurrentMovie;
 
     return (
-        <div className="movieCard">
+        <div className="movieCard"
+            onClick={
+                () => {
+                    setCurrentMovie(movie);
+                }
+            }
+
+        >
             {/* put heart icon at the top */}
-            <FontAwesomeIcon className="heart" icon={faHeart} color="red" onClick={
+            <FontAwesomeIcon className="heart" icon={faHeart} color="grey" onClick={
                 (heart) => {
                     if (heart.target.style.color == "grey") {
                         heart.target.style.color = "red";
+
                     }
                     else {
                         heart.target.style.color = "grey";
@@ -29,7 +38,7 @@ function MovieCard(props) {
                 }
             }
             />
-            <img src={ "https://image.tmdb.org/t/p/w500" + movie_poster} alt="Movie Poster" />
+            <img src={ movie_poster ?  "https://image.tmdb.org/t/p/w500" + movie_poster : "https://static.vecteezy.com/system/resources/previews/014/527/495/non_2x/plain-black-dslr-camera-free-png.png"} alt="Movie Poster" />
             <p className="title"> { movie_title } </p>
             <div className="ratingSection">
                 <p className="rating"> Rating- </p>
