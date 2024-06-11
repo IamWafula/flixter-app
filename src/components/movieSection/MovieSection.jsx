@@ -19,16 +19,29 @@ async function getNowPlaying(api_key, page){
 }
 
 
+
 function MovieSection(props) {
+
     const MOVIE_API_KEY = import.meta.env.VITE_API_KEY
+
     let searchTerm = props.searchTerm
 
     const [movies, setMovies] = useState([]);
+    const [pages, setPages] = useState(1);
+
+    // useEffect(() => {
+    //     searchMovies(searchTerm, MOVIE_API_KEY)
+    //         .then(data => {
+    //             console.log(data)
+    //             setMovies([...data.results])
+    //         })
+    //     }, [searchTerm]);
 
     useEffect(() => {
         getNowPlaying(MOVIE_API_KEY, 1)
             .then(data => {
-                setMovies(data.results)
+                console.log(data)
+                setMovies([...data.results])
             })
         }, []);
 
@@ -42,14 +55,27 @@ function MovieSection(props) {
     }
 
     return (
-        <div id="movieSection">
+        <div id="mainSection">
+            <div id="movieSection">
             {
                 movies.map(movie => {
                     return <MovieCard movie={movie} key={movie.id} />
                 })
             }
+            </div>
 
+            <button onClick={
+                () => {
+                    getNowPlaying(MOVIE_API_KEY, pages+1)
+                        .then(data => {
+                            console.log(data)
+                            setMovies([...movies, ...data.results])
+                            setPages(pages+1)
+                        })
+                }
+            }> add more </button>
         </div>
+
     );
 }
 

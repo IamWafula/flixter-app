@@ -6,9 +6,10 @@ import Sort from "../sortComponent/Sort.jsx"
 
 function SearchSort(props) {
 
+
     return (
         <div id="searchSort">
-            <Search/>
+            <Search setSearch={props.setSearch} />
 
             <Sort/>
 

@@ -9,7 +9,6 @@ function MovieCard(props) {
 
 
     let movie = props.movie;
-    console.log(movie);
 
     let movie_id = movie.id;
     let movie_title = movie.original_title;

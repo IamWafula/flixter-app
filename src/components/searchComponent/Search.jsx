@@ -1,14 +1,31 @@
 import "./Search.css"
 
+import { useState, useEffect } from "react";
 
 
 function Search(props) {
 
+    const [searchValue, setSearchValue] = useState("");
+
     return (
         <form id="search">
-            <input type="text" placeholder="search term"></input>
+            <input type="text" placeholder="search term"
+                onChange={(e) => {
+                    // props.setSearch(e.target.value)
+                    setSearchValue(e.target.value)
 
-            <button type="submit" >Search</button>
+                    if (e.target.value === "") {
+                        props.setSearch("")
+                    }
+                }}
+            ></input>
+
+            <button type="submit"
+                onClick={(e) => {
+                    e.preventDefault();
+                    props.setSearch(searchValue)
+                }}
+            >Search</button>
         </form>
     );
 }

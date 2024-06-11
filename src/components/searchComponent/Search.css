@@ -2,4 +2,22 @@
 
 #search {
     padding-left: 20px
+
+}
+
+#search > input {
+    width: 20vw;
+    height: 50px;
+    border-radius: 20px;
+    background-color: aliceblue;
+    color: black;
+    padding-left: 20px;
+}
+
+
+#search > button {
+    margin-left: 20px;
+    background-color: #D64933;
+    padding: 20px;
+    width: 150px;
 }
