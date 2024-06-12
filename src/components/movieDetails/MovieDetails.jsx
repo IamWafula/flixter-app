@@ -2,7 +2,7 @@ import "./MovieDetails.css";
 
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenNib, faEye, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faPenNib, faEye, faHeart, faX } from '@fortawesome/free-solid-svg-icons'
 
 import Genre from "../Genre/Genre";
 
@@ -51,11 +51,14 @@ function getGenres(genreID){
   }
 }
 
+function getTrailerUrl(movie_id){
+  return `https://www.youtube.com/embed/m5lwT5ssGpA`
+}
+
 
 function MovieDetails(props) {
   const movie = props.currentMovie;
-
-  console.log(movie);
+  const [showTrailer, setShowTrailer] = useState(false);
 
 
   let movie_name, movie_description, movie_genres, movie_poster;
@@ -79,8 +82,27 @@ function MovieDetails(props) {
 
   return (
 
-    <div id="backdrop" style={ { display: movie? "flex" : "none" }} >
-      <div id="movieModal" style={{ backgroundImage: `url(${movie_poster})`}}>
+    <div id="backdrop" style={ { display: movie? "flex" : "none" }}>
+
+      <FontAwesomeIcon icon={faX} className="icon"
+
+        onClick={() => {
+
+          if (showTrailer) {
+            props.setCurrentMovie(null);
+            setShowTrailer(false);
+          } else {
+            setShowTrailer(false);
+          }
+        }}
+
+      />
+
+      <iframe id="movieModal" style={{ display: showTrailer? "flex" : "none" }} width="1276" height="718" src={ getTrailerUrl(3) } title="Tame Impala - Borderline | 1 Hour Perfect Loop |" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen ></iframe>
+
+      <div id="movieModal" style={{ backgroundImage: `url(${movie_poster})`, display: showTrailer? "none" : "flex"}}>
+
+
         <div id="movie_details_container">
           <div id="movie_details">
               <h1>{movie_name}</h1>
@@ -100,7 +122,11 @@ function MovieDetails(props) {
 
         </div>
 
-        <button id="play_btn">play trailer</button>
+        <button id="play_btn"
+          onClick={() => {
+            setShowTrailer(true);
+          }}
+        >play trailer</button>
 
       </div>
     </div>

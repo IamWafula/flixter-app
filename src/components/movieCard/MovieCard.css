@@ -6,13 +6,11 @@
     background-color: rgb(32, 32, 32);
     border-radius: 20px;
     cursor: pointer;
-    transition: 0.5s;
 }
 
 .movieCard:hover {
     background-color: rgb(47, 46, 46);
     scale: 1.1;
-
 }
 
 .movieCard > img {

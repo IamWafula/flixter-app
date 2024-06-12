@@ -55,14 +55,6 @@ function MovieSection(props) {
         }
 
     }, [searchTerm]);
-
-    useEffect(() => {
-        if (currentMovie){
-            setPageTitle(currentMovie.title)
-        }
-    }, [currentMovie])
-
-
     return (
         <div id="mainSection">
             <h3>{pageTitle}</h3>

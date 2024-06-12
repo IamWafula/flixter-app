@@ -2,7 +2,7 @@ import "./MovieCard.css";
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenNib, faEye, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faPenNib, faEye, faHeart, faStar } from '@fortawesome/free-solid-svg-icons'
 
 
 function MovieCard(props) {
@@ -17,18 +17,12 @@ function MovieCard(props) {
 
     return (
         <div className="movieCard"
-            onClick={
-                () => {
-                    setCurrentMovie(movie);
-                }
-            }
-
         >
             {/* put heart icon at the top */}
-            <FontAwesomeIcon className="heart" icon={faHeart} color="grey" onClick={
+            <FontAwesomeIcon className="heart" icon={faStar} color="grey" onClick={
                 (heart) => {
                     if (heart.target.style.color == "grey") {
-                        heart.target.style.color = "red";
+                        heart.target.style.color = "gold";
 
                     }
                     else {
@@ -38,7 +32,14 @@ function MovieCard(props) {
                 }
             }
             />
-            <img src={ movie_poster ?  "https://image.tmdb.org/t/p/w500" + movie_poster : "https://static.vecteezy.com/system/resources/previews/014/527/495/non_2x/plain-black-dslr-camera-free-png.png"} alt="Movie Poster" />
+            <img
+                onClick={
+                    () => {
+                        setCurrentMovie(movie);
+                    }
+                }
+
+            src={ movie_poster ?  "https://image.tmdb.org/t/p/w500" + movie_poster : "https://static.vecteezy.com/system/resources/previews/014/527/495/non_2x/plain-black-dslr-camera-free-png.png"} alt="Movie Poster" />
             <p className="title"> { movie_title } </p>
             <div className="ratingSection">
                 <p className="rating"> Rating- </p>
@@ -46,6 +47,7 @@ function MovieCard(props) {
                 {/* replace with button */}
                 <FontAwesomeIcon className="watched" icon={faEye} onClick={
                     (eye) => {
+                        eye.stopPropagation()
                         if (eye.target.style.color == "grey") {
                             eye.target.style.color = "white";
                         } else {
