@@ -6,6 +6,10 @@
     justify-content: center;
     backdrop-filter: blur(10px);
     background-color: rgb(255 255 255 / 30%);
+
+    .icon {
+        cursor: pointer;
+    }
 }
 
 #movieModal {
@@ -40,6 +44,7 @@
         margin: 0 0 10px 0;
         font-size: 40px;
         font-weight: bolder;
+        text-align: right;
     }
 
     #date{
@@ -65,7 +70,7 @@
 
 #play_btn {
     width: 100px;
-    height: 100px;
+    height: 80px;
     align-self: center;
     cursor: pointer;
     background-color: rgba(240, 255, 255, 0.545);

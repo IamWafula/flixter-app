@@ -15,20 +15,22 @@ function App() {
   const [movies, setMovies] = useState([])
 
   const [searchTerm, setSearchTerm] = useState('')
-  const [sortBy, setSortBy] = useState('')
   const [searchBy, setSearchBy] = useState('')
+
+  const [sortBy, setSortBy] = useState('')
+  const [searchOption, setSearchOption] = useState('')
 
   useEffect (() => {
     setSearchBy(searchTerm)
-  }, [searchTerm, searchBy])
+    setSortBy(searchOption)
+  }, [searchTerm, searchBy, searchOption])
 
 
   return (
     <div id="App">
       <h1>Who-lu</h1>
-      <SearchSort setSearch={setSearchTerm} />
-      <MovieSection searchTerm={searchBy}  />
-
+      <SearchSort setSearch={setSearchTerm} setOption={(setSearchOption)} />
+      <MovieSection searchTerm={searchBy} sortOption={sortBy} />
       <Footer />
     </div>
   )
