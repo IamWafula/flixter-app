@@ -6,6 +6,11 @@
     background-color: rgb(32, 32, 32);
     border-radius: 20px;
     cursor: pointer;
+    overflow: hidden;
+
+    .heart {
+        padding: 10px;
+    }
 }
 
 .movieCard:hover {
@@ -15,9 +20,8 @@
 
 .movieCard > img {
     height: 200px;
-    width: 200px;
+    width: 250px;
     object-fit: cover;
-    padding: 0 20px 0 20px;
 }
 
 .movieCard > .title {
@@ -26,12 +30,6 @@
     font-weight: bolder;
     margin-top: 0;
     margin-bottom: 0;
-}
-
-
-.movieCard > .heart {
-    float: right;
-    padding: 10px;
 }
 
 .movieCard > p {

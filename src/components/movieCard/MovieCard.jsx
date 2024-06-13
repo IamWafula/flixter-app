@@ -1,6 +1,5 @@
 import "./MovieCard.css";
 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenNib, faEye, faHeart, faStar } from '@fortawesome/free-solid-svg-icons'
 
@@ -15,18 +14,22 @@ function MovieCard(props) {
     let movie_poster = movie.backdrop_path;
     let setCurrentMovie = props.setCurrentMovie;
 
+
+
     return (
         <div className="movieCard"
         >
             {/* put heart icon at the top */}
-            <FontAwesomeIcon className="heart" icon={faStar} color="grey" onClick={
+            <FontAwesomeIcon className="heart" icon={faStar} color="white" onClick={
                 (heart) => {
-                    if (heart.target.style.color == "grey") {
+                    if (heart.target.style.color == "white") {
                         heart.target.style.color = "gold";
-
+                        props.setFavoriteMovie((prev) => {
+                            return [...prev, movie];
+                        });
                     }
                     else {
-                        heart.target.style.color = "grey";
+                        heart.target.style.color = "white";
                     }
 
                 }
@@ -35,7 +38,7 @@ function MovieCard(props) {
             <img
                 onClick={
                     () => {
-                        setCurrentMovie(movie);
+                        props.setCurrentMovie(movie);
                     }
                 }
 
@@ -45,11 +48,15 @@ function MovieCard(props) {
                 <p className="rating"> Rating- </p>
                 <p> { movie.movie_rating } </p>
                 {/* replace with button */}
-                <FontAwesomeIcon className="watched" icon={faEye} onClick={
+                <FontAwesomeIcon className="watched" color="grey" icon={faEye} onClick={
                     (eye) => {
                         eye.stopPropagation()
                         if (eye.target.style.color == "grey") {
                             eye.target.style.color = "white";
+                            props.setWatchedMovies((prev) =>
+                                {
+                                    return [...prev, movie];
+                                })
                         } else {
                             eye.target.style.color = "grey";
                         }

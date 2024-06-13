@@ -1,0 +1,13 @@
+#sideBar{
+    width: 80vw;
+    min-width: 400px;
+    height: 80vh;
+    background-color: #242424;
+    border-radius: 20px;
+    margin: 0 0 10px 0;
+    position:static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

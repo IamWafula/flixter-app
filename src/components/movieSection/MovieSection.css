@@ -1,12 +1,19 @@
+#movieSectionContainer {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
 #movieSection{
     height: 80vh;
     background-color: black;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+
     overflow-y: scroll;
     gap: 20px;
-
 }
 
 
