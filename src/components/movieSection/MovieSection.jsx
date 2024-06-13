@@ -14,8 +14,7 @@ async function searchMovies(searchTerm, MOVIE_API_KEY, pages){
 }
 
 async function getNowPlaying(api_key, page, option){
-    console.log(option)
-    return fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=${option}}&api_key=${api_key}`)
+    return fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=${option}&api_key=${api_key}`)
         .then(response => response.json())
         .then(data => {
             return data;
@@ -56,7 +55,7 @@ function MovieSection(props) {
 
     useEffect(() => {
         if (searchTerm === ""){
-            getNowPlaying(MOVIE_API_KEY, 1, sortOption)
+            getNowPlaying(MOVIE_API_KEY, 1, props.sortOption)
                 .then(data => {
                     setMovies([...data.results])
                     setTotalPages(data.total_pages)
@@ -106,7 +105,7 @@ function MovieSection(props) {
                         return
                     }
                     if (pageTitle === "Now Playing"){
-                        getNowPlaying(MOVIE_API_KEY, pages+1)
+                        getNowPlaying(MOVIE_API_KEY, pages+1, props.sortOption)
                             .then(data => {
 
                                 let unique_movies = [ ...movies, ...data.results ]
