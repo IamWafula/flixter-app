@@ -3,7 +3,6 @@ import MovieCard from "../movieCard/MovieCard";
 import MovieDetails from "../movieDetails/MovieDetails";
 import { useState, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
-import SearchSort from "../searchSort/SearchSort";
 
 async function searchMovies(searchTerm, MOVIE_API_KEY, pages){
     return fetch(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${MOVIE_API_KEY}&page=${pages}`)

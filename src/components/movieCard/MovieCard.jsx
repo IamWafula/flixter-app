@@ -6,14 +6,13 @@ import { faPenNib, faEye, faHeart, faStar } from '@fortawesome/free-solid-svg-ic
 
 function MovieCard(props) {
 
-
     let movie = props.movie;
 
     let movie_id = movie.id;
     let movie_title = movie.original_title;
     let movie_poster = movie.backdrop_path;
     let setCurrentMovie = props.setCurrentMovie;
-
+    let rating = movie.vote_average;
 
 
     return (
@@ -45,7 +44,7 @@ function MovieCard(props) {
             src={ movie_poster ?  "https://image.tmdb.org/t/p/w500" + movie_poster : "https://static.vecteezy.com/system/resources/previews/014/527/495/non_2x/plain-black-dslr-camera-free-png.png"} alt="Movie Poster" />
             <p className="title"> { movie_title } </p>
             <div className="ratingSection">
-                <p className="rating"> Rating- </p>
+                <p className="rating"> Rating-{rating} </p>
                 <p> { movie.movie_rating } </p>
                 {/* replace with button */}
                 <FontAwesomeIcon className="watched" color="grey" icon={faEye} onClick={
