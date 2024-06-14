@@ -43,7 +43,7 @@ Deployed Application (optional): [Who-lu](https://flixter-app.onrender.com/)
 
 ### Walkthrough Video
 
-[[!Walkthrough](https://www.youtube.com/embed/03M5kTE4PBY)]
+[(https://www.youtube.com/embed/03M5kTE4PBY)]
 
 ### Website URL
 [Website](https://flixter-app.onrender.com/)
