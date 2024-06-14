@@ -112,13 +112,15 @@ function getTrailerUrl(movie_id, api_key){
 
 function MovieDetails(props) {
   const movie = props.currentMovie;
-  const [showTrailer, setShowTrailer] = useState(false);
-  const [trailerUrl, setTrailerUrl] = useState(null);
-  const [runtime, setCurrentMovieRunTime] = useState("");
+
   let api_key = import.meta.env.VITE_API_KEY;
   let movie_name, movie_description, movie_genres, movie_poster, movie_id, run_time;
 
-  movie_genres = [];
+  movie_genres = []
+
+  const [showTrailer, setShowTrailer] = useState(false);
+  const [trailerUrl, setTrailerUrl] = useState(null);
+  const [runtime, setCurrentMovieRunTime] = useState("");
 
   if (!movie) {
     movie_id = 0;
@@ -164,14 +166,9 @@ function MovieDetails(props) {
 
       />
 
-      {/* getTrailerUrl(movie_id, api_key) */}
-
-      {/* <iframe width="1276" height="718" src="https://www.youtube.com/embed/XeDbyVODQ5M" title="Godzilla x Kong: The New Empire | Tickets on Sale Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> */}
-
       <iframe id="movieModal" style={{ display: showTrailer? "flex" : "none" }} width="1276" height="718" src={ "https://www.youtube.com/embed/"+trailerUrl } title={movie_name} frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen ></iframe>
 
       <div id="movieModal" style={{ backgroundImage: `url(${movie_poster})`, display: showTrailer? "none" : "flex"}}>
-
 
         <div id="movie_details_container">
           <div id="movie_details">
@@ -183,7 +180,7 @@ function MovieDetails(props) {
 
                   {movie_genres.map((genre, index) => {
                     return (
-                      <Genre key={index} genre_name={getGenres(genre)}/>
+                      <Genre key={index} genre_id={genre}/>
                       )
                   })}
 

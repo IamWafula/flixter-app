@@ -19,16 +19,16 @@ function MovieCard(props) {
         <div className="movieCard"
         >
             {/* put heart icon at the top */}
-            <FontAwesomeIcon className="heart" icon={faStar} color="white" onClick={
+            <FontAwesomeIcon className="heart" icon={faStar} color="grey" onClick={
                 (heart) => {
-                    if (heart.target.style.color == "white") {
+                    if (heart.target.style.color == "grey") {
                         heart.target.style.color = "gold";
                         props.setFavoriteMovie((prev) => {
                             return [...prev, movie];
                         });
                     }
                     else {
-                        heart.target.style.color = "white";
+                        heart.target.style.color = "grey";
                     }
 
                 }

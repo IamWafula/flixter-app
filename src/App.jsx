@@ -20,17 +20,22 @@ function App() {
   const [sortBy, setSortBy] = useState('')
   const [searchOption, setSearchOption] = useState('')
 
+  const [filterBy, setFilterBy] = useState('')
+  const [filterOption, setFilterOption] = useState('')
+
+
   useEffect (() => {
     setSearchBy(searchTerm)
     setSortBy(searchOption)
-  }, [searchTerm, searchBy, searchOption])
+    setFilterBy(filterOption)
+  }, [searchTerm, searchBy, searchOption, filterBy, filterOption])
 
 
   return (
     <div id="App">
       <h1>Who-lu</h1>
-      <SearchSort setSearch={setSearchTerm} setOption={(setSearchOption)} />
-      <MovieSection searchTerm={searchBy} sortOption={sortBy} />
+      <SearchSort setSearch={setSearchTerm} setOption={setSearchOption} setFilter={setFilterOption} />
+      <MovieSection searchTerm={searchBy} sortOption={sortBy} filterBy={filterBy} />
       <Footer />
     </div>
   )
