@@ -43,7 +43,7 @@ Deployed Application (optional): [Who-lu](https://flixter-app.onrender.com/)
 
 ### Walkthrough Video
 
-<iframe width="720" height="776" src="https://www.youtube.com/embed/03M5kTE4PBY" title="Flixster Website Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[[!Walkthrough](https://www.youtube.com/embed/03M5kTE4PBY)]
 
 ### Website URL
 [Website](https://flixter-app.onrender.com/)
