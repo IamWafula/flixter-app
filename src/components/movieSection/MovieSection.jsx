@@ -3,6 +3,7 @@ import MovieCard from "../movieCard/MovieCard";
 import MovieDetails from "../movieDetails/MovieDetails";
 import { useState, useEffect } from "react";
 import Sidebar from "../sidebar/Sidebar";
+import Genre from "../Genre/Genre";
 
 async function searchMovies(searchTerm, MOVIE_API_KEY, pages){
     return fetch(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${MOVIE_API_KEY}&page=${pages}`)
@@ -18,6 +19,17 @@ async function getNowPlaying(api_key, page, option){
         .then(data => {
             return data;
         })
+}
+
+
+function filterMovies(movies, filterOption){
+    if (filterOption > 0){
+        movies = movies.filter(movie => {
+            // parseInt since select value is a string
+            return movie.genre_ids.includes( parseInt(filterOption))
+        } )
+    }
+    return movies;
 }
 
 function MovieSection(props) {
@@ -38,6 +50,9 @@ function MovieSection(props) {
 
     const [currentMovie, setCurrentMovie] = useState(null)
 
+    const [currentGenre, setCurrentGenre] = useState("All")
+
+    let movie_genres = []
 
     useEffect(() => {
         if (currentMovie){
@@ -53,11 +68,14 @@ function MovieSection(props) {
 
 
     useEffect(() => {
+        console.log(props.filterBy)
         if (searchTerm === ""){
             getNowPlaying(MOVIE_API_KEY, 1, props.sortOption)
                 .then(data => {
-                    setMovies([...data.results])
-                    setTotalPages(data.total_pages)
+
+                setMovies(filterMovies([...data.results], props.filterBy))
+                setTotalPages(data.total_pages)
+
                 })
             setPageTitle("Now Playing")
             setPages(1)
@@ -65,22 +83,44 @@ function MovieSection(props) {
         } else {
             searchMovies(searchTerm, MOVIE_API_KEY, 1)
             .then(data => {
-                setMovies([...data.results])
+
+                setMovies(filterMovies([...data.results], props.filterBy))
                 setTotalPages(data.total_pages)
+
             })
             setPageTitle("Results for: " + searchTerm)
             setPages(1)
         }
 
-    }, [searchTerm, props.sortOption]);
+    }, [searchTerm, props.sortOption, props.filterBy]);
+
+
+
+
+
     return (
         <div id="movieSectionContainer">
             <Sidebar allWatched={watchedMovies} favorites={favorites} showSidebar={showSidebar} />
+
 
             <div id="mainSection">
             {/* <h3>{pageTitle}</h3> */}
             <MovieDetails currentMovie={currentMovie} setCurrentMovie={setCurrentMovie} />
 
+            <div id="genreSection" style={{
+                display: "flex",
+                flexDirection: "row",
+                overflow: "scroll",
+                overflowX: "hidden",
+                 }}>
+                {
+                    movie_genres.map(genre => {
+                        return (
+                            <Genre key={genre} genre_name={genre}/>
+                        )
+                    })
+                }
+            </div>
 
             <div id="movieSection">
 
@@ -110,7 +150,7 @@ function MovieSection(props) {
                                 let unique_movies = [ ...movies, ...data.results ]
                                 unique_movies = [...new Set(unique_movies)]
 
-                                setMovies(unique_movies);
+                                setMovies(filterMovies(unique_movies, props.filterBy))
                                 setPages(pages+1)
                             })
                     } else {
@@ -120,7 +160,7 @@ function MovieSection(props) {
                                 let unique_movies = [ ...movies, ...data.results ]
                                 unique_movies = [...new Set(unique_movies)]
 
-                                setMovies(unique_movies);
+                                setMovies(filterMovies(unique_movies, props.filterBy))
 
                                 setPages(pages+1)
                             })

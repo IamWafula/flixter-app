@@ -14,3 +14,27 @@
 
     }
 }
+
+
+.genreFilter {
+    width: max-content;
+    background-color: rgba(250, 235, 215, 0.545);
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+
+    p {
+        font-size: 10px;
+        text-align: center;
+
+    }
+
+    .icon {
+        height: 15px;
+        padding-left: 5px;
+    }
+
+}
